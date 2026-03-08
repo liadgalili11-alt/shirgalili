@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שיר גלילי - מאמנת רגשית לילדים ובני נוער</title>
+    
+    <!-- Scripts for React, Babel and Tailwind -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Assistant', sans-serif;
+        }
+        .dir-rtl { direction: rtl; }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(-5%); }
+            50% { transform: translateY(0); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite;
+        }
+        /* WhatsApp Bubble Style */
+        .whatsapp-bubble {
+            position: relative;
+            background: #ffffff;
+            border-radius: 18px;
+            border-top-right-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .whatsapp-bubble::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #ffffff 50%, transparent 50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const Icon = ({ name, size = 24, className = "" }) => {
+            useEffect(() => {
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            }, [name]);
+            return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
+        };
+
+        const App = () => {
+            const [scrolled, setScrolled] = useState(false);
+            const [formData, setFormData] = useState({ name: '', phone: '', age: '' });
+            const [isSubmitted, setIsSubmitted] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                if (window.lucide) window.lucide.createIcons();
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const handleWhatsAppClick = (type = 'general') => {
+                const phone = "972544572696";
+                const messages = {
+                    general: "היי שיר, אשמח לשמוע פרטים על תהליך הליווי שלך",
+                    freebie: "היי שיר, אשמח לממש את המתנה החינמית שלך!"
+                };
+                const text = encodeURIComponent(messages[type] || messages.general);
+                window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+            };
+
+            const handleFormSubmit = (e) => {
+                e.preventDefault();
+                const recipientEmail = "shirgalili.coach@gmail.com";
+                const subject = encodeURIComponent(`פנייה חדשה מדף הנחיתה - ${formData.name}`);
+                const body = encodeURIComponent(
+                    `שלום שיר,\n\nהתקבלה פנייה חדשה לתיאום אימון רגשי:\n\n` +
+                    `שם מלא: ${formData.name}\n` +
+                    `טלפון: ${formData.phone}\n` +
+                    `גיל הילד/ה: ${formData.age}\n\n` +
+                    `נשלח מדף הנחיתה.`
+                );
+                window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+                setIsSubmitted(true);
+                setTimeout(() => setIsSubmitted(false), 5000);
+            };
+
+            const services = [
+                { title: "חיזוק הדימוי העצמי והביטחון", icon: "trophy", iconColor: "text-amber-500", color: "bg-amber-50" },
+                { title: "ויסות רגשי והתמודדות עם כעסים", icon: "sun", iconColor: "text-orange-400", color: "bg-orange-50" },
+                { title: "תקשורת טובה ובריאה עם הסביבה", icon: "messages-square", iconColor: "text-blue-500", color: "bg-blue-50" },
+                { title: "הצבת מטרות אישיות והגשמה", icon: "target", iconColor: "text-red-500", color: "bg-red-50" }
+            ];
+
+            const testimonials = [
+                { text: "היי שיר שבוע טוב ממי! רציתי לשתף אותך שדיברנו בשבת וממש שמתי לב שהוא הרבה יותר מודע לעצמו, הוא כבר מחכה בקוצר רוח למפגש שלכם השבוע! אני לא יודעת מה את עושה שם אבל זה עובד!! אני ממש ממש מודה לך! 🙏💖", time: "20:35" },
+                { text: "היי שיר, מה שלומך? ערב טוב, בשמחה, גם יש כמה עדכונים שחייבת לשתף אותך... דברים טובים כמובן! הילד חזר פשוט אחרת היום ✨", time: "21:37" },
+                { text: "היי שיר, רציתי לומר תודה. הילד בן 7 וחצי ואני רואה שינוי אמיתי בדרך שהוא מפרש סיטואציות בבית. המדריך ששלחת לנו עזר לנו מאוד להתחיל לדבר בשפה אחרת בבית, זה פשוט קסם! 😍", time: "10:15" }
+            ];
+
+            return (
+                <div className="min-h-screen bg-[#fcfdfd] text-slate-800 selection:bg-blue-100 dir-rtl">
+                    {/* Navigation */}
+                    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-2 flex justify-between items-center ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b' : 'bg-transparent'}`}>
+                        <div className="flex items-center">
+                            <img src="logo.png" alt="לוגו" className="h-16 md:h-20 object-contain" onError={(e) => e.target.style.display='none'} />
+                        </div>
+                        <div className="hidden md:flex gap-8 font-medium text-[#4a6b8a]">
+                            <a href="#services" className="hover:text-[#5c85a8] transition">תחומי ליווי</a>
+                            <a href="#about" className="hover:text-[#5c85a8] transition">קצת עליי</a>
+                            <a href="#testimonials" className="hover:text-[#5c85a8] transition">המלצות</a>
+                            <a href="#freebie" className="text-[#9eb89a] font-bold">מתנה בחינם</a>
+                            <a href="#contact" className="hover:text-[#5c85a8] transition">צור קשר</a>
+                        </div>
+                        <button onClick={() => handleWhatsAppClick('general')} className="bg-[#25D366] text-white px-5 py-2.5 rounded-full flex items-center gap-2 font-bold shadow-md hover:bg-[#20ba5a] transition">
+                            <Icon name="message-circle" size={18} />
+                            <span>דברו איתי</span>
+                        </button>
+                    </nav>
+
+                    {/* Hero Section */}
+                    <section className="relative pt-36 pb-20 px-6 bg-gradient-to-b from-[#f0f4f8] via-white to-white text-right">
+                        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 text-right">
+                            <div className="md:w-1/2 space-y-8 z-10 text-right">
+                                <div className="inline-block bg-[#9eb89a]/20 text-[#6a8a66] px-4 py-1 rounded-full text-sm font-bold border border-[#9eb89a]/30">עכשיו יותר מתמיד הילדים שלכם זקוקים למענה</div>
+                                <h1 className="text-4xl md:text-6xl font-extrabold text-[#4a6b8a] leading-tight text-right">מעניקה לילד שלך <span className="text-[#9eb89a]">ארגז כלים</span> רגשי לחיים</h1>
+                                <p className="text-xl text-slate-600 leading-relaxed text-right">נעים מאוד, אני <span className="font-bold text-[#4a6b8a]">שיר</span>, מאמנת רגשית לילדים ונוער. אני מזמינה את ילדיכם לתהליך של צמיחה וביטחון.</p>
+                                <div className="flex flex-wrap gap-4 justify-start">
+                                    <button onClick={() => handleWhatsAppClick('general')} className="bg-[#25D366] text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-lg transform hover:-translate-y-1 transition">תיאום שיחת ייעוץ בוואטסאפ</button>
+                                    <button onClick={() => document.getElementById('freebie').scrollIntoView({ behavior: 'smooth' })} className="bg-white border-2 border-[#9eb89a] text-[#6a8a66] px-10 py-4 rounded-2xl text-lg font-bold hover:bg-[#9eb89a]/5 transition">לקבלת המוצר החינמי</button>
+                                </div>
+                            </div>
+                            <div className="md:w-1/2 relative">
+                                <div className="relative w-full aspect-square max-w-md mx-auto">
+                                    <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden border-8 border-white shadow-2xl">
+                                        <img src="shir-profile.png" alt="שיר" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="absolute -bottom-6 -right-10 z-20 bg-white p-5 rounded-2xl shadow-xl border flex items-center gap-4 hidden sm:flex">
+                                        <div className="bg-[#9eb89a]/20 p-2 rounded-full text-[#6a8a66]"><Icon name="heart" /></div>
+                                        <div className="text-right"><div className="font-bold text-right">מרחב בטוח ומכיל</div><div className="text-sm text-slate-500 text-right">שיר גלילי</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Services Section */}
+                    <section id="services" className="py-24 px-6 bg-white text-right">
+                        <div className="max-w-6xl mx-auto text-center">
+                            <h2 className="text-3xl md:text-5xl font-bold text-[#4a6b8a] mb-4 text-center">במה אנחנו מתמקדים?</h2>
+                            <div className="w-24 h-1.5 bg-[#9eb89a] mx-auto rounded-full mb-16"></div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {services.map((s, i) => (
+                                    <div key={i} className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all text-center">
+                                        <div className={`w-24 h-24 ${s.color} rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner text-center`}>
+                                            <Icon name={s.icon} size={40} className={s.iconColor} />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-[#4a6b8a] text-center">{s.title}</h3>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* About Me Section */}
+                    <section id="about" className="py-24 px-6 bg-slate-50 text-right">
+                        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center text-right">
+                            <div className="md:w-2/5 text-center">
+                                <div className="relative inline-block">
+                                    <div className="absolute -inset-4 bg-[#9eb89a]/20 rounded-full blur-xl animate-pulse"></div>
+                                    <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl mx-auto grayscale-0 hover:grayscale transition duration-500">
+                                        <img src="shir-profile.png" alt="שיר גלילי" className="w-full h-full object-cover" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:w-3/5 space-y-6 text-right">
+                                <h2 className="text-3xl md:text-5xl font-bold text-[#4a6b8a] text-right">נעים מאוד, אני שיר</h2>
+                                <div className="w-20 h-1.5 bg-[#9eb89a] rounded-full mr-0 text-right"></div>
+                                <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right">
+                                    <p>אני <strong>שיר גלילי</strong>, מאמנת רגשית בשיטת "בשביל ההורות", מורה ומחנכת.</p>
+                                    <p>
+                                        הקשר שלי עם עולם הילדים והנוער התחיל עוד כשהייתי נערה בעצמי. תמיד מצאתי את עצמי במקום המקשיב, המכיל והמייעץ, עד שרבים מחבריי נהגו לכנות אותי "הפסיכולוגית האישית" שלהם.
+                                    </p>
+                                    <p className="bg-white p-4 rounded-xl border-r-4 border-[#9eb89a] shadow-sm italic text-right">
+                                        "בעקבות תקופה מאתגרת שעברתי בחיי, זכיתי להיחשף לעולם האימון הרגשי – הפעם מכיסא המתאמנת. החוויה הזו שינתה את חיי מהקצה אל הקצה!"
+                                    </p>
+                                    <p>
+                                        באותו רגע מדויק, כשהרגשתי את השינוי על בשרי, ידעתי שזה הייעוד שלי: להעביר את הטוב הזה הלאה, להעניק לילדים ולבני נוער את הכלים ששינו אותי, ולעזור להם לצמוח מתוך כל אתגר.
+                                    </p>
+                                </div>
+                                <button onClick={() => handleWhatsAppClick('general')} className="flex items-center gap-2 text-[#4a6b8a] font-bold hover:gap-4 transition-all text-right">
+                                    <span>רוצים להכיר אותי טוב יותר? בואו נדבר</span>
+                                    <Icon name="arrow-left" size={20} />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Testimonials Section */}
+                    <section id="testimonials" className="py-24 px-6 bg-[#f0f2f5] overflow-hidden text-right">
+                        <div className="max-w-4xl mx-auto text-right">
+                            <div className="text-center mb-16 text-center">
+                                <h2 className="text-3xl md:text-5xl font-bold text-[#4a6b8a] mb-4 text-center">מה הורים מספרים?</h2>
+                                <div className="w-24 h-1.5 bg-[#9eb89a] mx-auto rounded-full mb-8"></div>
+                                <p className="text-slate-700 text-center font-semibold text-lg text-center">הודעות אמיתיות שנשלחו כבר בזמן תהליך הליווי הרגשי של הילדים שלכם!</p>
+                            </div>
+                            
+                            <div className="space-y-12 text-right">
+                                {testimonials.map((t, i) => (
+                                    <div key={i} className={`flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'} animate-in slide-in-from-bottom duration-700`}>
+                                        <div className={`max-w-[85%] md:max-w-[60%] whatsapp-bubble p-4 text-right shadow-md ${i % 2 !== 0 ? 'bg-[#dcf8c6]' : 'bg-white'}`}>
+                                            <p className="text-slate-800 leading-relaxed text-lg mb-2 text-right">{t.text}</p>
+                                            <div className="text-[11px] text-slate-400 text-left">{t.time} ✓✓</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Freebie Section */}
+                    <section id="freebie" className="py-24 px-6 relative overflow-hidden text-right">
+                        <div className="absolute inset-0 bg-[#5c85a8]"></div>
+                        <div className="max-w-5xl mx-auto relative z-10 text-right">
+                            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 text-white text-right">
+                                <div className="md:w-3/5 space-y-6 text-right">
+                                    <div className="inline-block bg-[#9eb89a] px-4 py-1 rounded-full text-sm font-bold uppercase text-right">מתנה עבורכם</div>
+                                    <h2 className="text-3xl md:text-5xl font-bold text-right">לראות את העולם במגוון צבעים 🎨</h2>
+                                    <p className="text-xl text-blue-50 leading-relaxed text-right">הכנתי לכם מוצר חינמי שעוזר לילדים לגלות שיש יותר מדרך אחת להסתכל על סיטואציות. כלי פשוט שמשנה אווירה בבית.</p>
+                                    <button onClick={() => handleWhatsAppClick('freebie')} className="bg-[#25D366] text-white px-10 py-5 rounded-2xl text-xl font-bold flex items-center gap-3 shadow-xl hover:bg-[#20ba5a] transition active:scale-95 text-right">
+                                        <Icon name="message-circle" size={30} />
+                                        <span>שלחי לי את המתנה לוואטסאפ</span>
+                                    </button>
+                                </div>
+                                <div className="md:w-2/5 text-center">
+                                    <div className="text-8xl animate-bounce-slow text-center">🎁</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Clinic Section */}
+                    <section className="py-24 px-6 bg-slate-50 text-right">
+                        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center text-right">
+                            <div className="md:w-1/2 text-right">
+                                <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group text-right">
+                                    <img src="clinic.png" alt="קליניקה" className="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                                </div>
+                            </div>
+                            <div className="md:w-1/2 space-y-6 text-right">
+                                <h2 className="text-3xl font-bold text-[#4a6b8a] text-right">הקליניקה שלי</h2>
+                                <div className="w-16 h-1.5 bg-[#9eb89a] rounded-full mr-0 text-right"></div>
+                                <p className="text-lg text-slate-600 leading-relaxed text-right">התהליך מתקיים במרחב רגוע, בטוח ומזמין. הקליניקה מעוצבת כדי להשרות ביטחון ולאפשר ביטוי עצמי מלא דרך שיחה, משחק ויצירה.</p>
+                                <div className="space-y-4 pt-4 text-right">
+                                    {["ליווי אישי ממוקד תוצאות 🌱", "הדרכת הורים צמודה 🏡", "סביבה תומכת ומקבלת ☁️"].map((t, i) => (
+                                        <div key={i} className="bg-white p-4 rounded-2xl border border-slate-100 font-bold shadow-sm text-right">{t}</div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer / Contact Section */}
+                    <footer id="contact" className="bg-[#1e293b] text-white py-20 px-6 text-right">
+                        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 text-right">
+                            <div className="space-y-8 text-right">
+                                <div className="bg-white p-3 inline-block rounded-2xl shadow-lg text-right">
+                                    <img src="logo.png" className="h-20" alt="לוגו שיר" />
+                                </div>
+                                <h2 className="text-3xl font-bold text-right">אני זמינה לכל שאלה</h2>
+                                <div className="space-y-4 text-right">
+                                    <a href="tel:0544572696" className="flex items-center gap-4 text-xl hover:text-blue-400 transition group justify-start text-right">
+                                        <div className="bg-blue-500/10 p-3 rounded-full text-blue-400 group-hover:bg-blue-500/20 text-right"><Icon name="phone" /></div>
+                                        <span className="font-mono text-right">054-4572696</span>
+                                    </a>
+                                    <button onClick={() => handleWhatsAppClick('general')} className="flex items-center gap-4 text-xl bg-[#25D366]/10 p-3 pr-4 rounded-2xl border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/20 transition-all w-full md:w-auto justify-start text-right">
+                                        <Icon name="message-circle" />
+                                        <span className="font-bold text-right">שיר - מאמנת רגשית</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/10 relative shadow-2xl text-right">
+                                {isSubmitted && (
+                                    <div className="absolute inset-0 z-20 bg-slate-900/95 flex flex-col items-center justify-center p-8 text-center animate-in fade-in duration-300">
+                                        <Icon name="check-circle" size={48} className="text-green-500 mb-4 text-center" />
+                                        <h3 className="text-2xl font-bold mb-2 text-center">המייל מוכן!</h3>
+                                        <p className="text-slate-300 text-center">אנא לחצו על 'שלח' באפליקציית המייל שפתחנו עבורכם.</p>
+                                        <button onClick={() => setIsSubmitted(false)} className="mt-4 underline text-[#9eb89a] text-center">חזור</button>
+                                    </div>
+                                )}
+                                <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 justify-start text-right">נחזור אליכם בהקדם <span className="text-[#9eb89a]">🍃</span></h3>
+                                <form onSubmit={handleFormSubmit} className="space-y-5 text-right">
+                                    <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-5 py-4 bg-white/5 rounded-xl border border-white/10 text-white focus:border-[#9eb89a] outline-none transition-colors text-right" placeholder="שם מלא" />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-right">
+                                        <input required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full px-5 py-4 bg-white/5 rounded-xl border border-white/10 text-white focus:border-[#9eb89a] outline-none transition-colors text-right" placeholder="טלפון" />
+                                        <input required value={formData.age} onChange={e => setFormData({...formData, age: e.target.value})} className="w-full px-5 py-4 bg-white/5 rounded-xl border border-white/10 text-white focus:border-[#9eb89a] outline-none transition-colors text-right" placeholder="גיל הילד/ה" />
+                                    </div>
+                                    <button type="submit" className="w-full bg-[#5c85a8] hover:bg-[#4a6b8a] py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition shadow-lg text-right">
+                                        <Icon name="send" size={20} />
+                                        <span>שליחת פרטים לתיאום</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div className="mt-20 pt-8 border-t border-white/10 text-center text-slate-500 text-sm text-center">
+                            © {new Date().getFullYear()} שיר גלילי - מאמנת רגשית לילדים ובני נוער | כל הזכויות שמורות
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
