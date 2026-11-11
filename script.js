@@ -141,6 +141,8 @@
   var bar = document.querySelector('.progress');
   var zooms = document.querySelectorAll('[data-zoom]');
   var art = document.querySelector('[data-progress]');
+  var floaters = document.querySelectorAll('.float__item');
+  var paused = false;
   var ticking = false;
 
   var update = function () {
@@ -159,6 +161,13 @@
       frame.style.setProperty('--zoom', zoom.toFixed(3));
     });
     if (art) art.style.setProperty('--p', progressOf(art, 1, 0.45).toFixed(3));
+    if (!paused) {
+      floaters.forEach(function (item) {
+        var r = item.parentNode.getBoundingClientRect();
+        if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
+        item.style.setProperty('--py', (r.top * -Number(item.dataset.speed)).toFixed(1) + 'px');
+      });
+    }
   };
   var requestUpdate = function () {
     if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
@@ -166,6 +175,18 @@
   window.addEventListener('scroll', requestUpdate, { passive: true });
   window.addEventListener('resize', requestUpdate);
   update();
+
+  /* כפתור עצירת אנימציות (נשמר לביקור הבא) */
+  var toggle = document.querySelector('.motion-toggle');
+  var setPaused = function (value) {
+    paused = value;
+    document.documentElement.classList.toggle('no-motion', value);
+    toggle.setAttribute('aria-pressed', String(value));
+    toggle.textContent = value ? 'הפעלת אנימציות' : 'עצירת אנימציות';
+    try { localStorage.setItem('motion', value ? 'off' : 'on'); } catch (e) { /* אחסון חסום - לא נורא */ }
+  };
+  toggle.addEventListener('click', function () { setPaused(!paused); });
+  try { if (localStorage.getItem('motion') === 'off') setPaused(true); } catch (e) { /* ממשיכים כרגיל */ }
 
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
