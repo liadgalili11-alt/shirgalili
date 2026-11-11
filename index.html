@@ -19,6 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/assistant-hebrew-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="styles.css">
 
 <script type="application/ld+json">
@@ -38,6 +39,7 @@
 <a class="skip" href="#main">דילוג לתוכן</a>
 
 <header class="header">
+  <div class="progress" aria-hidden="true"></div>
   <div class="wrap header__in">
     <a class="logo" href="#top" aria-label="שיר גלילי - לראש העמוד">
       <img src="img/logo.webp" width="520" height="297" alt="שיר - מאמנת רגשית לילדים ובני נוער">
@@ -58,17 +60,17 @@
 
   <section class="hero" id="top">
     <div class="wrap hero__grid">
-      <div class="hero__text">
+      <div class="hero__text" data-reveal>
         <span class="badge">עכשיו יותר מתמיד הילדים שלכם זקוקים למענה</span>
         <h1>מעניקה לילד שלך <span class="hl">ארגז כלים</span> רגשי לחיים</h1>
-        <p class="lead">נעים מאוד, אני <strong>שיר</strong>, מאמנת רגשית לילדים ונוער. אני מזמינה את ילדיכם לתהליך של צמיחה וביטחון.</p>
+        <p class="lead"><strong>שיר גלילי</strong>, מאמנת רגשית לילדים ונוער. מזמינה את ילדיכם לתהליך של צמיחה וביטחון.</p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%A9%D7%9C%D7%9A" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>תיאום שיחת ייעוץ בוואטסאפ</span></a>
           <a class="btn btn--ghost" href="#freebie">לקבלת המתנה בחינם</a>
         </div>
       </div>
-      <div class="hero__photo">
-        <img src="img/shir-900.webp" srcset="img/shir-480.webp 480w, img/shir-900.webp 900w" sizes="(min-width: 900px) 440px, 90vw" width="900" height="917" alt="שיר גלילי יושבת על כורסה ומחייכת" fetchpriority="high">
+      <div class="hero__photo" data-reveal>
+        <div class="frame" data-zoom="out"><img src="img/shir-900.webp" srcset="img/shir-480.webp 480w, img/shir-900.webp 900w" sizes="(min-width: 900px) 440px, 90vw" width="900" height="917" alt="שיר גלילי יושבת על כורסה ומחייכת" fetchpriority="high"></div>
         <div class="hero__tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg><span>מרחב בטוח ומכיל</span></div>
       </div>
     </div>
@@ -76,53 +78,50 @@
 
   <section class="section" id="services">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2>במה אנחנו מתמקדים?</h2>
         <svg class="wave" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M3 9c18-8 34-8 54-2s38 6 60-2"/></svg>
       </div>
       <ul class="focus-list">
-        <li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>חיזוק הדימוי העצמי והביטחון</h3></li><li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>ויסות רגשי והתמודדות עם כעסים</h3></li><li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>תקשורת טובה ובריאה עם הסביבה</h3></li><li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>הצבת מטרות אישיות והגשמה</h3></li>
+        <li data-reveal><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>חיזוק הדימוי העצמי והביטחון</h3></li><li data-reveal><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>ויסות רגשי והתמודדות עם כעסים</h3></li><li data-reveal><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>תקשורת טובה ובריאה עם הסביבה</h3></li><li data-reveal><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>הצבת מטרות אישיות והגשמה</h3></li>
       </ul>
     </div>
   </section>
 
   <section class="section section--sand" id="about">
-    <div class="wrap about__grid">
-      <div class="about__photo">
-        <img src="img/shir-480.webp" width="480" height="489" loading="lazy" alt="שיר גלילי">
-      </div>
-      <div class="about__text">
+    <div class="wrap about">
+      <div class="about__intro" data-reveal>
         <h2>נעים מאוד, אני שיר</h2>
-        <p>אני <strong>שיר גלילי</strong>, מאמנת רגשית בשיטת "בשביל ההורות", מורה ומחנכת.</p>
-        <p>הקשר שלי עם עולם הילדים והנוער התחיל עוד כשהייתי נערה בעצמי. תמיד מצאתי את עצמי במקום המקשיב, המכיל והמייעץ, עד שרבים מחבריי נהגו לכנות אותי "הפסיכולוגית האישית" שלהם.</p>
-        <blockquote class="quote">בעקבות תקופה מאתגרת שעברתי בחיי, זכיתי להיחשף לעולם האימון הרגשי - הפעם מכיסא המתאמנת. החוויה הזו שינתה את חיי מהקצה אל הקצה!</blockquote>
-        <p>באותו רגע מדויק, כשהרגשתי את השינוי על בשרי, ידעתי שזה הייעוד שלי: להעביר את הטוב הזה הלאה, להעניק לילדים ולבני נוער את הכלים ששינו אותי.</p>
-        <a class="text-link" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%A9%D7%9C%D7%9A" target="_blank" rel="noopener"><span>רוצים להכיר אותי טוב יותר? בואו נדבר</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+        <p class="lead">מאמנת רגשית בשיטת "בשביל ההורות", מורה ומחנכת.</p>
       </div>
+      <p data-reveal>הקשר שלי עם עולם הילדים והנוער התחיל עוד כשהייתי נערה בעצמי. תמיד מצאתי את עצמי במקום המקשיב, המכיל והמייעץ, עד שרבים מחבריי נהגו לכנות אותי "הפסיכולוגית האישית" שלהם.</p>
+      <blockquote class="quote" data-words>בעקבות תקופה מאתגרת שעברתי בחיי, זכיתי להיחשף לעולם האימון הרגשי - הפעם מכיסא המתאמנת. החוויה הזו שינתה את חיי מהקצה אל הקצה!</blockquote>
+      <p data-reveal>באותו רגע מדויק, כשהרגשתי את השינוי על בשרי, ידעתי שזה הייעוד שלי: להעביר את הטוב הזה הלאה, להעניק לילדים ולבני נוער את הכלים ששינו אותי.</p>
+      <p data-reveal><a class="text-link" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%A9%D7%9C%D7%9A" target="_blank" rel="noopener"><span>רוצים להכיר אותי טוב יותר? בואו נדבר</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a></p>
     </div>
   </section>
 
   <section class="section section--sage" id="testimonials">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2>מה הורים מספרים?</h2>
         <svg class="wave" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M3 9c18-8 34-8 54-2s38 6 60-2"/></svg>
         <p>הודעות אמיתיות שהורים שלחו לי במהלך תהליך הליווי הרגשי של הילדים.</p>
       </div>
       <div class="chat">
-        <figure class="bubble"><p>היי שיר שבוע טוב ממי! רציתי לשתף אותך שדיברנו בשבת וממש שמתי לב שהוא הרבה יותר מודע לעצמו, הוא כבר מחכה בקוצר רוח למפגש שלכם השבוע! אני לא יודעת מה את עושה שם אבל זה עובד!! אני ממש ממש מודה לך! 🙏💖</p><footer>20:35</footer></figure><figure class="bubble"><p>היי שיר, מה שלומך? ערב טוב, בשמחה, גם יש כמה עדכונים שחייבת לשתף אותך... דברים טובים כמובן! הילד חזר פשוט אחרת היום ✨</p><footer>21:37</footer></figure><figure class="bubble"><p>היי שיר, רציתי לומר תודה. הילד בן 7 וחצי ואני רואה שינוי אמיתי בדרך שהוא מפרש סיטואציות בבית. המדריך ששלחת לנו עזר לנו מאוד להתחיל לדבר בשפה אחרת בבית, זה פשוט קסם! 😍</p><footer>10:15</footer></figure>
+        <figure class="bubble" data-reveal="pop"><p>היי שיר שבוע טוב ממי! רציתי לשתף אותך שדיברנו בשבת וממש שמתי לב שהוא הרבה יותר מודע לעצמו, הוא כבר מחכה בקוצר רוח למפגש שלכם השבוע! אני לא יודעת מה את עושה שם אבל זה עובד!! אני ממש ממש מודה לך! 🙏💖</p><footer>20:35</footer></figure><figure class="bubble" data-reveal="pop"><p>היי שיר, מה שלומך? ערב טוב, בשמחה, גם יש כמה עדכונים שחייבת לשתף אותך... דברים טובים כמובן! הילד חזר פשוט אחרת היום ✨</p><footer>21:37</footer></figure><figure class="bubble" data-reveal="pop"><p>היי שיר, רציתי לומר תודה. הילד בן 7 וחצי ואני רואה שינוי אמיתי בדרך שהוא מפרש סיטואציות בבית. המדריך ששלחת לנו עזר לנו מאוד להתחיל לדבר בשפה אחרת בבית, זה פשוט קסם! 😍</p><footer>10:15</footer></figure>
       </div>
     </div>
   </section>
 
   <section class="section" id="reels">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2>צפו בתוכן שלי</h2>
         <svg class="wave" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M3 9c18-8 34-8 54-2s38 6 60-2"/></svg>
         <p>טיפים, תובנות ורגעים מהעבודה שלי עם ילדים.</p>
       </div>
-      <div class="reels">
+      <div class="reels" data-reveal>
         <button class="reels__btn reels__btn--prev" type="button" data-dir="prev" aria-label="הרילס הקודם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
         <div class="reels__track" tabindex="0" aria-label="רילסים מהאינסטגרם של שיר">
           <div class="reel" data-reel="DWlQNzSiEaG"><a href="https://www.instagram.com/reel/DWlQNzSiEaG/" target="_blank" rel="noopener">לצפייה ברילס 1 באינסטגרם</a></div><div class="reel" data-reel="DVrFF6oCOFn"><a href="https://www.instagram.com/reel/DVrFF6oCOFn/" target="_blank" rel="noopener">לצפייה ברילס 2 באינסטגרם</a></div><div class="reel" data-reel="DVZHgqCiKS-"><a href="https://www.instagram.com/reel/DVZHgqCiKS-/" target="_blank" rel="noopener">לצפייה ברילס 3 באינסטגרם</a></div><div class="reel" data-reel="DVV3-wFiIl_"><a href="https://www.instagram.com/reel/DVV3-wFiIl_/" target="_blank" rel="noopener">לצפייה ברילס 4 באינסטגרם</a></div><div class="reel" data-reel="DULuH8jiEqg"><a href="https://www.instagram.com/reel/DULuH8jiEqg/" target="_blank" rel="noopener">לצפייה ברילס 5 באינסטגרם</a></div><div class="reel" data-reel="DTqaefiCB6h"><a href="https://www.instagram.com/reel/DTqaefiCB6h/" target="_blank" rel="noopener">לצפייה ברילס 6 באינסטגרם</a></div><div class="reel" data-reel="DSnSCO4iOHI"><a href="https://www.instagram.com/reel/DSnSCO4iOHI/" target="_blank" rel="noopener">לצפייה ברילס 7 באינסטגרם</a></div>
@@ -135,13 +134,13 @@
 
   <section class="section freebie" id="freebie">
     <div class="wrap freebie__grid">
-      <div class="freebie__text">
+      <div class="freebie__text" data-reveal>
         <span class="badge">מתנה עבורכם</span>
         <h2>לראות את העולם במגוון צבעים</h2>
         <p class="lead">הכנתי לכם מוצר חינמי שעוזר לילדים לגלות שיש יותר מדרך אחת להסתכל על סיטואציות. כלי פשוט שמשנה אווירה בבית.</p>
         <a class="btn btn--light" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%AA%D7%A0%D7%94%20%D7%94%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%A9%D7%9C%D7%9A%21" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>שלחי לי את המתנה לוואטסאפ</span></a>
       </div>
-      <svg class="freebie__art" viewBox="0 0 240 200" aria-hidden="true">
+      <svg class="freebie__art" data-progress viewBox="0 0 240 200" aria-hidden="true">
         <circle cx="84" cy="78" r="62" fill="#a9d5e0" opacity=".9"/>
         <circle cx="156" cy="78" r="62" fill="#f2cfa2" opacity=".85"/>
         <circle cx="120" cy="128" r="62" fill="#9eb89a" opacity=".85"/>
@@ -151,10 +150,10 @@
 
   <section class="section section--sand" id="clinic">
     <div class="wrap clinic__grid">
-      <div class="clinic__photo">
-        <img src="img/clinic.webp" width="900" height="1125" loading="lazy" alt="הקליניקה של שיר: ספה בהירה, שולחן עץ עם צבעים, משחקים ודפי יצירה">
+      <div class="clinic__photo" data-reveal>
+        <div class="frame" data-zoom="in"><img src="img/clinic.webp" width="900" height="1125" loading="lazy" alt="הקליניקה של שיר: ספה בהירה, שולחן עץ עם צבעים, משחקים ודפי יצירה"></div>
       </div>
-      <div class="clinic__text">
+      <div class="clinic__text" data-reveal>
         <h2>הקליניקה שלי</h2>
         <p>התהליך מתקיים במרחב רגוע, בטוח ומזמין. הקליניקה מעוצבת כדי להשרות ביטחון ולאפשר ביטוי עצמי מלא דרך שיחה, משחק ויצירה.</p>
         <ul class="checks">
@@ -168,7 +167,7 @@
 
   <section class="section" id="contact">
     <div class="wrap contact__grid">
-      <div class="contact__info">
+      <div class="contact__info" data-reveal>
         <h2>אני זמינה לכל שאלה</h2>
         <p class="lead">הדרך הכי מהירה היא הודעה בוואטסאפ. אפשר גם להתקשר או להשאיר פרטים ואחזור אליכם.</p>
         <ul class="contact-links">
@@ -179,7 +178,7 @@
         </ul>
       </div>
 
-      <form class="form" id="lead-form">
+      <form class="form" id="lead-form" data-reveal>
         <h3>השאירו פרטים ואחזור אליכם</h3>
         <p>הפרטים נשלחים אליי ישירות כהודעת וואטסאפ.</p>
         <div class="field">

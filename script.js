@@ -100,6 +100,73 @@
     note.textContent = 'וואטסאפ נפתח עם ההודעה מוכנה - נשאר רק ללחוץ "שלח".';
   });
 
+  /* ── תנועה בגלילה (כבויה כשבמכשיר מוגדרת "הפחתת תנועה") ── */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('[data-reveal]');
+
+  /* דירוג קל בין פריטים סמוכים (רשימות, בועות) */
+  document.querySelectorAll('.focus-list, .chat').forEach(function (group) {
+    Array.prototype.forEach.call(group.children, function (el, i) { el.style.setProperty('--d', (i * 110) + 'ms'); });
+  });
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); revealObserver.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  }
+
+  /* ציטוט שנדלק מילה אחרי מילה תוך כדי גלילה */
+  var quote = document.querySelector('[data-words]');
+  var words = [];
+  if (quote && !reduce) {
+    var full = quote.textContent.trim();
+    quote.setAttribute('aria-label', full);
+    quote.innerHTML = full.split(/\s+/).map(function (w) {
+      return '<span class="w" aria-hidden="true">' + w + '</span>';
+    }).join(' ');
+    words = quote.querySelectorAll('.w');
+  }
+
+  var clamp = function (n) { return Math.max(0, Math.min(1, n)); };
+  /* 0 כשהאלמנט נכנס מלמטה, 1 כשהוא מגיע לגובה `end` של המסך */
+  var progressOf = function (el, start, end) {
+    var r = el.getBoundingClientRect(), vh = window.innerHeight;
+    return clamp((vh * start - r.top) / (vh * (start - end)));
+  };
+  var bar = document.querySelector('.progress');
+  var zooms = document.querySelectorAll('[data-zoom]');
+  var art = document.querySelector('[data-progress]');
+  var ticking = false;
+
+  var update = function () {
+    ticking = false;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    bar.style.setProperty('--scroll', max > 0 ? clamp(window.scrollY / max) : 0);
+    if (reduce) return;
+    if (words.length) {
+      var lit = Math.round(progressOf(quote, 0.85, 0.35) * words.length);
+      for (var i = 0; i < words.length; i++) words[i].classList.toggle('on', i < lit);
+    }
+    zooms.forEach(function (frame) {
+      var p = progressOf(frame, 1, 0.1);
+      var zoom = frame.dataset.zoom === 'in' ? 1.18 - 0.18 * p : 1 + 0.1 * clamp(window.scrollY / window.innerHeight);
+      frame.style.setProperty('--zoom', zoom.toFixed(3));
+    });
+    if (art) art.style.setProperty('--p', progressOf(art, 1, 0.45).toFixed(3));
+  };
+  var requestUpdate = function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  };
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  update();
+
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();
