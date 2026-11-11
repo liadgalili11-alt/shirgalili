@@ -1,504 +1,213 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>שיר גלילי - מאמנת רגשית לילדים ובני נוער</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>שיר גלילי - מאמנת רגשית לילדים ובני נוער</title>
+<meta name="description" content="שיר גלילי, מאמנת רגשית לילדים ובני נוער בשיטת &quot;בשביל ההורות&quot;. חיזוק ביטחון עצמי, ויסות רגשי, תקשורת והצבת מטרות - בליווי אישי ובהדרכת הורים.">
+<link rel="canonical" href="https://liadgalili11-alt.github.io/shirgalili/">
+<meta name="theme-color" content="#1f5f54">
+<link rel="icon" type="image/png" sizes="48x48" href="img/icon-48.png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
 
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="שיר גלילי - מאמנת רגשית לילדים ובני נוער">
+<meta property="og:description" content="ארגז כלים רגשי לחיים: ליווי אישי לילדים ונוער והדרכת הורים צמודה.">
+<meta property="og:url" content="https://liadgalili11-alt.github.io/shirgalili/">
+<meta property="og:image" content="https://liadgalili11-alt.github.io/shirgalili/img/shir-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+<link rel="preload" href="fonts/assistant-hebrew-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
 
-        html { scroll-behavior: smooth; }
-        * { box-sizing: border-box; }
-        body { font-family: 'Assistant', sans-serif; margin: 0; }
-        .dir-rtl { direction: rtl; }
-
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(-5%); }
-            50% { transform: translateY(0); }
-        }
-        .animate-bounce-slow { animation: bounce-slow 3s infinite; }
-
-        /* WhatsApp bubble */
-        .whatsapp-bubble {
-            position: relative;
-            border-radius: 18px;
-            border-top-right-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .whatsapp-bubble.sent { border-top-right-radius: 18px; border-top-left-radius: 4px; }
-        .whatsapp-bubble::before {
-            content: "";
-            position: absolute;
-            top: 0; right: -10px;
-            width: 20px; height: 20px;
-            background: linear-gradient(135deg, #ffffff 50%, transparent 50%);
-        }
-        .whatsapp-bubble.sent::before {
-            right: auto; left: -10px;
-            background: linear-gradient(225deg, #dcf8c6 50%, transparent 50%);
-        }
-
-        /* Active nav underline */
-        .nav-active {
-            color: #9eb89a !important;
-            font-weight: 700;
-        }
-        .nav-active::after {
-            content: '';
-            display: block;
-            height: 2px;
-            background: #9eb89a;
-            border-radius: 2px;
-            margin-top: 2px;
-        }
-
-        /* Reels horizontal scroll */
-        .reels-track {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 12px 4px 20px;
-        }
-        .reels-track::-webkit-scrollbar { display: none; }
-
-        .reel-card {
-            flex: 0 0 280px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-            border: 1px solid rgba(0,0,0,0.07);
-            background: #000;
-            height: 498px;
-        }
-
-        .reel-card iframe {
-            width: 100%;
-            height: 100%;
-            display: block;
-            border: none;
-        }
-
-        /* Scroll arrow buttons */
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 50%;
-            width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .scroll-btn:hover { background: #f8fafc; transform: translateY(-50%) scale(1.08); }
-        .scroll-btn.right { right: -16px; }
-        .scroll-btn.left  { left: -16px; }
-    </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "שיר גלילי - מאמנת רגשית לילדים ובני נוער",
+  "url": "https://liadgalili11-alt.github.io/shirgalili/",
+  "image": "https://liadgalili11-alt.github.io/shirgalili/img/shir-og.jpg",
+  "telephone": "+972-54-457-2696",
+  "email": "shirgalili.coach@gmail.com",
+  "sameAs": ["https://www.instagram.com/shir.galili_"]
+}
+</script>
 </head>
 <body>
-<div id="root"></div>
+<a class="skip" href="#main">דילוג לתוכן</a>
 
-<script type="text/babel">
-    const { useState, useEffect, useRef } = React;
+<header class="header">
+  <div class="wrap header__in">
+    <a class="logo" href="#top" aria-label="שיר גלילי - לראש העמוד">
+      <img src="img/logo.webp" width="520" height="297" alt="שיר - מאמנת רגשית לילדים ובני נוער">
+    </a>
+    <nav class="nav" aria-label="ניווט ראשי"><a href="#services">תחומי ליווי</a><a href="#about">קצת עליי</a><a href="#testimonials">המלצות</a><a href="#reels">רילסים</a><a href="#freebie">מתנה בחינם</a><a href="#contact">צור קשר</a></nav>
+    <div class="header__actions">
+      <a class="btn btn--primary btn--sm" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%A9%D7%9C%D7%9A" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>דברו איתי</span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="פתיחת התפריט">
+        <svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="ניווט במובייל"><a href="#services">תחומי ליווי</a><a href="#about">קצת עליי</a><a href="#testimonials">המלצות</a><a href="#reels">רילסים</a><a href="#freebie">מתנה בחינם</a><a href="#contact">צור קשר</a></nav>
+</header>
 
-    const Icon = ({ name, size = 24, className = "" }) => {
-        useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, [name]);
-        return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
-    };
+<main id="main">
 
-    /* =====================================================
-       REELS — paste Shir's reel embed URLs here.
-       Format: https://www.instagram.com/reel/SHORTCODE/embed/
-       ===================================================== */
-    const REELS = [
-        "https://www.instagram.com/reel/DWlQNzSiEaG/embed/",
-        "https://www.instagram.com/reel/DVrFF6oCOFn/embed/",
-        "https://www.instagram.com/reel/DVZHgqCiKS-/embed/",
-        "https://www.instagram.com/reel/DVV3-wFiIl_/embed/",
-        "https://www.instagram.com/reel/DULuH8jiEqg/embed/",
-        "https://www.instagram.com/reel/DTqaefiCB6h/embed/",
-        "https://www.instagram.com/reel/DSnSCO4iOHI/embed/",
-    ];
+  <section class="hero" id="top">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <span class="badge">עכשיו יותר מתמיד הילדים שלכם זקוקים למענה</span>
+        <h1>מעניקה לילד שלך <span class="hl">ארגז כלים</span> רגשי לחיים</h1>
+        <p class="lead">נעים מאוד, אני <strong>שיר</strong>, מאמנת רגשית לילדים ונוער. אני מזמינה את ילדיכם לתהליך של צמיחה וביטחון.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%A9%D7%9C%D7%9A" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>תיאום שיחת ייעוץ בוואטסאפ</span></a>
+          <a class="btn btn--ghost" href="#freebie">לקבלת המתנה בחינם</a>
+        </div>
+      </div>
+      <div class="hero__photo">
+        <img src="img/shir-900.webp" srcset="img/shir-480.webp 480w, img/shir-900.webp 900w" sizes="(min-width: 900px) 440px, 90vw" width="900" height="917" alt="שיר גלילי יושבת על כורסה ומחייכת" fetchpriority="high">
+        <div class="hero__tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg><span>מרחב בטוח ומכיל</span></div>
+      </div>
+    </div>
+  </section>
 
-    const SECTIONS = ['services', 'about', 'testimonials', 'reels', 'freebie', 'contact'];
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>במה אנחנו מתמקדים?</h2>
+        <svg class="wave" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M3 9c18-8 34-8 54-2s38 6 60-2"/></svg>
+      </div>
+      <ul class="focus-list">
+        <li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>חיזוק הדימוי העצמי והביטחון</h3></li><li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>ויסות רגשי והתמודדות עם כעסים</h3></li><li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>תקשורת טובה ובריאה עם הסביבה</h3></li><li><span class="leaf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20C4 10.5 10 4.5 20 4c.4 10-5.6 16-16 16Z"/></svg></span><h3>הצבת מטרות אישיות והגשמה</h3></li>
+      </ul>
+    </div>
+  </section>
 
-    const App = () => {
-        const [scrolled,       setScrolled]       = useState(false);
-        const [activeSection,  setActiveSection]  = useState('');
-        const [formData,       setFormData]        = useState({ name: '', phone: '', age: '' });
-        const [isSubmitted,    setIsSubmitted]     = useState(false);
-        const reelsRef = useRef(null);
+  <section class="section section--sand" id="about">
+    <div class="wrap about__grid">
+      <div class="about__photo">
+        <img src="img/shir-480.webp" width="480" height="489" loading="lazy" alt="שיר גלילי">
+      </div>
+      <div class="about__text">
+        <h2>נעים מאוד, אני שיר</h2>
+        <p>אני <strong>שיר גלילי</strong>, מאמנת רגשית בשיטת "בשביל ההורות", מורה ומחנכת.</p>
+        <p>הקשר שלי עם עולם הילדים והנוער התחיל עוד כשהייתי נערה בעצמי. תמיד מצאתי את עצמי במקום המקשיב, המכיל והמייעץ, עד שרבים מחבריי נהגו לכנות אותי "הפסיכולוגית האישית" שלהם.</p>
+        <blockquote class="quote">בעקבות תקופה מאתגרת שעברתי בחיי, זכיתי להיחשף לעולם האימון הרגשי - הפעם מכיסא המתאמנת. החוויה הזו שינתה את חיי מהקצה אל הקצה!</blockquote>
+        <p>באותו רגע מדויק, כשהרגשתי את השינוי על בשרי, ידעתי שזה הייעוד שלי: להעביר את הטוב הזה הלאה, להעניק לילדים ולבני נוער את הכלים ששינו אותי.</p>
+        <a class="text-link" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%A9%D7%9C%D7%9A" target="_blank" rel="noopener"><span>רוצים להכיר אותי טוב יותר? בואו נדבר</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+      </div>
+    </div>
+  </section>
 
-        /* ---- scroll → nav background ---- */
-        useEffect(() => {
-            const onScroll = () => setScrolled(window.scrollY > 20);
-            window.addEventListener('scroll', onScroll);
-            return () => window.removeEventListener('scroll', onScroll);
-        }, []);
+  <section class="section section--sage" id="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>מה הורים מספרים?</h2>
+        <svg class="wave" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M3 9c18-8 34-8 54-2s38 6 60-2"/></svg>
+        <p>הודעות אמיתיות שהורים שלחו לי במהלך תהליך הליווי הרגשי של הילדים.</p>
+      </div>
+      <div class="chat">
+        <figure class="bubble"><p>היי שיר שבוע טוב ממי! רציתי לשתף אותך שדיברנו בשבת וממש שמתי לב שהוא הרבה יותר מודע לעצמו, הוא כבר מחכה בקוצר רוח למפגש שלכם השבוע! אני לא יודעת מה את עושה שם אבל זה עובד!! אני ממש ממש מודה לך! 🙏💖</p><footer>20:35</footer></figure><figure class="bubble"><p>היי שיר, מה שלומך? ערב טוב, בשמחה, גם יש כמה עדכונים שחייבת לשתף אותך... דברים טובים כמובן! הילד חזר פשוט אחרת היום ✨</p><footer>21:37</footer></figure><figure class="bubble"><p>היי שיר, רציתי לומר תודה. הילד בן 7 וחצי ואני רואה שינוי אמיתי בדרך שהוא מפרש סיטואציות בבית. המדריך ששלחת לנו עזר לנו מאוד להתחיל לדבר בשפה אחרת בבית, זה פשוט קסם! 😍</p><footer>10:15</footer></figure>
+      </div>
+    </div>
+  </section>
 
-        /* ---- Intersection Observer → active nav item ---- */
-        useEffect(() => {
-            const observers = SECTIONS.map(id => {
-                const el = document.getElementById(id);
-                if (!el) return null;
-                const obs = new IntersectionObserver(
-                    ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-                    { rootMargin: '-35% 0px -35% 0px', threshold: 0 }
-                );
-                obs.observe(el);
-                return obs;
-            });
-            if (window.lucide) window.lucide.createIcons();
-            return () => observers.forEach(o => o?.disconnect());
-        }, []);
+  <section class="section" id="reels">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>צפו בתוכן שלי</h2>
+        <svg class="wave" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M3 9c18-8 34-8 54-2s38 6 60-2"/></svg>
+        <p>טיפים, תובנות ורגעים מהעבודה שלי עם ילדים.</p>
+      </div>
+      <div class="reels">
+        <button class="reels__btn reels__btn--prev" type="button" data-dir="prev" aria-label="הרילס הקודם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="reels__track" tabindex="0" aria-label="רילסים מהאינסטגרם של שיר">
+          <div class="reel" data-reel="DWlQNzSiEaG"><a href="https://www.instagram.com/reel/DWlQNzSiEaG/" target="_blank" rel="noopener">לצפייה ברילס באינסטגרם</a></div><div class="reel" data-reel="DVrFF6oCOFn"><a href="https://www.instagram.com/reel/DVrFF6oCOFn/" target="_blank" rel="noopener">לצפייה ברילס באינסטגרם</a></div><div class="reel" data-reel="DVZHgqCiKS-"><a href="https://www.instagram.com/reel/DVZHgqCiKS-/" target="_blank" rel="noopener">לצפייה ברילס באינסטגרם</a></div><div class="reel" data-reel="DVV3-wFiIl_"><a href="https://www.instagram.com/reel/DVV3-wFiIl_/" target="_blank" rel="noopener">לצפייה ברילס באינסטגרם</a></div><div class="reel" data-reel="DULuH8jiEqg"><a href="https://www.instagram.com/reel/DULuH8jiEqg/" target="_blank" rel="noopener">לצפייה ברילס באינסטגרם</a></div><div class="reel" data-reel="DTqaefiCB6h"><a href="https://www.instagram.com/reel/DTqaefiCB6h/" target="_blank" rel="noopener">לצפייה ברילס באינסטגרם</a></div><div class="reel" data-reel="DSnSCO4iOHI"><a href="https://www.instagram.com/reel/DSnSCO4iOHI/" target="_blank" rel="noopener">לצפייה ברילס באינסטגרם</a></div>
+        </div>
+        <button class="reels__btn reels__btn--next" type="button" data-dir="next" aria-label="הרילס הבא"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+      </div>
+      <a class="text-link reels__more" href="https://www.instagram.com/shir.galili_" target="_blank" rel="noopener"><span>לכל הרילסים באינסטגרם</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+    </div>
+  </section>
 
-        const scrollReels = (dir) => {
-            reelsRef.current?.scrollBy({ left: dir * 312, behavior: 'smooth' });
-        };
+  <section class="section freebie" id="freebie">
+    <div class="wrap freebie__grid">
+      <div class="freebie__text">
+        <span class="badge">מתנה עבורכם</span>
+        <h2>לראות את העולם במגוון צבעים</h2>
+        <p class="lead">הכנתי לכם מוצר חינמי שעוזר לילדים לגלות שיש יותר מדרך אחת להסתכל על סיטואציות. כלי פשוט שמשנה אווירה בבית.</p>
+        <a class="btn btn--light" href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%AA%D7%A0%D7%94%20%D7%94%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%A9%D7%9C%D7%9A%21" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>שלחי לי את המתנה לוואטסאפ</span></a>
+      </div>
+      <svg class="freebie__art" viewBox="0 0 240 200" aria-hidden="true">
+        <circle cx="84" cy="78" r="62" fill="#a9d5e0" opacity=".9"/>
+        <circle cx="156" cy="78" r="62" fill="#f2cfa2" opacity=".85"/>
+        <circle cx="120" cy="128" r="62" fill="#9eb89a" opacity=".85"/>
+      </svg>
+    </div>
+  </section>
 
-        const handleWhatsApp = (type = 'general') => {
-            const msgs = {
-                general: "היי שיר, אשמח לשמוע פרטים על תהליך הליווי שלך",
-                freebie: "היי שיר, אשמח לממש את המתנה החינמית שלך!"
-            };
-            window.open(`https://wa.me/972544572696?text=${encodeURIComponent(msgs[type])}`, '_blank');
-        };
+  <section class="section section--sand" id="clinic">
+    <div class="wrap clinic__grid">
+      <div class="clinic__photo">
+        <img src="img/clinic.webp" width="900" height="1125" loading="lazy" alt="הקליניקה של שיר: ספה בהירה, שולחן עץ עם צבעים, משחקים ודפי יצירה">
+      </div>
+      <div class="clinic__text">
+        <h2>הקליניקה שלי</h2>
+        <p>התהליך מתקיים במרחב רגוע, בטוח ומזמין. הקליניקה מעוצבת כדי להשרות ביטחון ולאפשר ביטוי עצמי מלא דרך שיחה, משחק ויצירה.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>ליווי אישי ממוקד תוצאות</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>הדרכת הורים צמודה</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>סביבה תומכת ומקבלת</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        const handleFormSubmit = (e) => {
-            e.preventDefault();
-            const subject = encodeURIComponent(`פנייה חדשה מדף הנחיתה - ${formData.name}`);
-            const body = encodeURIComponent(
-                `שלום שיר,\n\nהתקבלה פנייה חדשה לתיאום אימון רגשי:\n\nשם מלא: ${formData.name}\nטלפון: ${formData.phone}\nגיל הילד/ה: ${formData.age}\n\nנשלח מדף הנחיתה.`
-            );
-            window.location.href = `mailto:shirgalili.coach@gmail.com?subject=${subject}&body=${body}`;
-            setIsSubmitted(true);
-            setTimeout(() => setIsSubmitted(false), 5000);
-        };
+  <section class="section" id="contact">
+    <div class="wrap contact__grid">
+      <div class="contact__info">
+        <h2>אני זמינה לכל שאלה</h2>
+        <p class="lead">הדרך הכי מהירה היא הודעה בוואטסאפ. אפשר גם להתקשר או להשאיר פרטים ואחזור אליכם.</p>
+        <ul class="contact-links">
+          <li><a href="https://wa.me/972544572696?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%A9%D7%9C%D7%9A" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>וואטסאפ<small>שיר - מאמנת רגשית</small></span></a></li>
+          <li><a href="tel:+972544572696"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>טלפון<small><bdi>054-4572696</bdi></small></span></a></li>
+          <li><a href="mailto:shirgalili.coach@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span>מייל<small><bdi>shirgalili.coach@gmail.com</bdi></small></span></a></li>
+          <li><a href="https://www.instagram.com/shir.galili_" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><span>אינסטגרם<small><bdi>@shir.galili_</bdi></small></span></a></li>
+        </ul>
+      </div>
 
-        const services = [
-            { title: "חיזוק הדימוי העצמי והביטחון",        icon: "trophy",          iconColor: "text-amber-500",  color: "bg-amber-50"  },
-            { title: "ויסות רגשי והתמודדות עם כעסים",       icon: "sun",             iconColor: "text-orange-400", color: "bg-orange-50" },
-            { title: "תקשורת טובה ובריאה עם הסביבה",        icon: "messages-square", iconColor: "text-blue-500",   color: "bg-blue-50"   },
-            { title: "הצבת מטרות אישיות והגשמה",            icon: "target",          iconColor: "text-red-500",    color: "bg-red-50"    },
-        ];
+      <form class="form" id="lead-form">
+        <h3>השאירו פרטים ואחזור אליכם</h3>
+        <p>הפרטים נשלחים אליי ישירות כהודעת וואטסאפ.</p>
+        <div class="field">
+          <label for="f-name">שם מלא</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="fields-2">
+          <div class="field">
+            <label for="f-phone">טלפון</label>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" pattern="[0-9+\- ]{9,15}" title="מספר טלפון, למשל 054-1234567" required>
+          </div>
+          <div class="field">
+            <label for="f-age">גיל הילד/ה</label>
+            <input id="f-age" name="age" type="text" inputmode="numeric" required>
+          </div>
+        </div>
+        <button class="btn btn--primary btn--block" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>שליחת פרטים לתיאום</span></button>
+        <p class="form__note" id="form-note" role="status"></p>
+      </form>
+    </div>
+  </section>
 
-        const testimonials = [
-            { text: "היי שיר שבוע טוב ממי! רציתי לשתף אותך שדיברנו בשבת וממש שמתי לב שהוא הרבה יותר מודע לעצמו, הוא כבר מחכה בקוצר רוח למפגש שלכם השבוע! אני לא יודעת מה את עושה שם אבל זה עובד!! אני ממש ממש מודה לך! 🙏💖", time: "20:35", sent: false },
-            { text: "היי שיר, מה שלומך? ערב טוב, בשמחה, גם יש כמה עדכונים שחייבת לשתף אותך... דברים טובים כמובן! הילד חזר פשוט אחרת היום ✨", time: "21:37", sent: true },
-            { text: "היי שיר, רציתי לומר תודה. הילד בן 7 וחצי ואני רואה שינוי אמיתי בדרך שהוא מפרש סיטואציות בבית. המדריך ששלחת לנו עזר לנו מאוד להתחיל לדבר בשפה אחרת בבית, זה פשוט קסם! 😍", time: "10:15", sent: false },
-        ];
+</main>
 
-        const navItem = (href, label, id, extraClass = '') => {
-            const active = activeSection === id;
-            return (
-                <a key={id} href={`#${href}`}
-                   className={`relative transition-all duration-200 ${extraClass} ${active ? 'nav-active' : 'hover:text-[#3d9080]'}`}>
-                    {label}
-                </a>
-            );
-        };
+<footer class="footer">
+  <div class="wrap">© <span id="year">2026</span> שיר גלילי - מאמנת רגשית לילדים ובני נוער | כל הזכויות שמורות</div>
+</footer>
 
-        return (
-            <div className="min-h-screen bg-[#fcfdfd] text-slate-800 dir-rtl">
-
-                {/* ── Navigation ── */}
-                <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-2 flex justify-between items-center
-                    ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100' : 'bg-transparent'}`}>
-
-                    <img src="logo.png" alt="לוגו" className="h-16 md:h-20 object-contain"
-                         onError={e => e.target.style.display = 'none'} />
-
-                    <div className="hidden md:flex gap-8 font-medium text-[#2d7a68]">
-                        {navItem('services',     'תחומי ליווי', 'services')}
-                        {navItem('about',        'קצת עליי',    'about')}
-                        {navItem('testimonials', 'המלצות',      'testimonials')}
-                        {navItem('reels',        'רילסים',      'reels')}
-                        {navItem('freebie',      'מתנה בחינם',  'freebie', activeSection !== 'freebie' ? 'text-[#9eb89a] font-bold' : '')}
-                        {navItem('contact',      'צור קשר',     'contact')}
-                    </div>
-
-                    <button onClick={() => handleWhatsApp()}
-                            className="bg-[#25D366] text-white px-5 py-2.5 rounded-full flex items-center gap-2 font-bold shadow-md hover:bg-[#20ba5a] hover:scale-105 active:scale-95 transition-all">
-                        <Icon name="message-circle" size={18} />
-                        <span>דברו איתי</span>
-                    </button>
-                </nav>
-
-                {/* ── Hero ── */}
-                <section className="relative pt-36 pb-20 px-6 bg-gradient-to-b from-[#f0f5f3] via-white to-white text-right">
-                    <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
-                        <div className="md:w-1/2 space-y-8 z-10 text-right">
-                            <div className="inline-block bg-[#8b7050]/10 text-[#8b7050] px-4 py-1 rounded-full text-sm font-bold border border-[#8b7050]/30">
-                                עכשיו יותר מתמיד הילדים שלכם זקוקים למענה
-                            </div>
-                            <h1 className="text-4xl md:text-6xl font-extrabold text-[#2d7a68] leading-tight">
-                                מעניקה לילד שלך <span className="text-[#9eb89a]">ארגז כלים</span> רגשי לחיים
-                            </h1>
-                            <p className="text-xl text-slate-600 leading-relaxed">
-                                נעים מאוד, אני <span className="font-bold text-[#2d7a68]">שיר</span>, מאמנת רגשית לילדים ונוער.
-                                אני מזמינה את ילדיכם לתהליך של צמיחה וביטחון.
-                            </p>
-                            <div className="flex flex-wrap gap-4">
-                                <button onClick={() => handleWhatsApp()}
-                                        className="bg-[#25D366] text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all">
-                                    תיאום שיחת ייעוץ בוואטסאפ
-                                </button>
-                                <button onClick={() => document.getElementById('freebie').scrollIntoView({ behavior: 'smooth' })}
-                                        className="bg-white border-2 border-[#9eb89a] text-[#6a8a66] px-10 py-4 rounded-2xl text-lg font-bold hover:bg-[#9eb89a]/5 hover:-translate-y-1 hover:shadow-md transition-all">
-                                    לקבלת המוצר החינמי
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="md:w-1/2 relative">
-                            <div className="relative w-full aspect-square max-w-md mx-auto">
-                                <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden border-8 border-white shadow-2xl">
-                                    <img src="shir-profile.png" alt="שיר" className="w-full h-full object-cover object-top" />
-                                </div>
-                                <div className="absolute -bottom-6 -right-6 z-20 bg-white p-4 rounded-2xl shadow-xl border flex items-center gap-3 hidden sm:flex">
-                                    <div className="bg-[#9eb89a]/20 p-2 rounded-full text-[#6a8a66]"><Icon name="heart" /></div>
-                                    <div className="text-right">
-                                        <div className="font-bold text-sm">מרחב בטוח ומכיל</div>
-                                        <div className="text-xs text-slate-500">שיר גלילי</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Services ── */}
-                <section id="services" className="py-24 px-6 bg-white">
-                    <div className="max-w-6xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-5xl font-bold text-[#2d7a68] mb-4">במה אנחנו מתמקדים?</h2>
-                        <div className="w-24 h-1.5 bg-[#9eb89a] mx-auto rounded-full mb-16"></div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {services.map((s, i) => (
-                                <div key={i} className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">
-                                    <div className={`w-24 h-24 ${s.color} rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner`}>
-                                        <Icon name={s.icon} size={40} className={s.iconColor} />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-[#2d7a68]">{s.title}</h3>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── About ── */}
-                <section id="about" className="py-24 px-6 bg-slate-50 text-right">
-                    <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-                        <div className="md:w-2/5 text-center">
-                            <div className="relative inline-block">
-                                <div className="absolute -inset-4 bg-[#9eb89a]/20 rounded-full blur-xl animate-pulse"></div>
-                                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl mx-auto hover:grayscale transition duration-500">
-                                    <img src="shir-profile.png" alt="שיר גלילי" className="w-full h-full object-cover object-top" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="md:w-3/5 space-y-6 text-right">
-                            <h2 className="text-3xl md:text-5xl font-bold text-[#2d7a68]">נעים מאוד, אני שיר</h2>
-                            <div className="w-20 h-1.5 bg-[#9eb89a] rounded-full"></div>
-                            <div className="space-y-4 text-lg text-slate-700 leading-relaxed">
-                                <p>אני <strong>שיר גלילי</strong>, מאמנת רגשית בשיטת "בשביל ההורות", מורה ומחנכת.</p>
-                                <p>הקשר שלי עם עולם הילדים והנוער התחיל עוד כשהייתי נערה בעצמי. תמיד מצאתי את עצמי במקום המקשיב, המכיל והמייעץ, עד שרבים מחבריי נהגו לכנות אותי "הפסיכולוגית האישית" שלהם.</p>
-                                <p className="bg-white p-4 rounded-xl border-r-4 border-[#8b7050] shadow-sm italic text-[#8b7050]/90">
-                                    "בעקבות תקופה מאתגרת שעברתי בחיי, זכיתי להיחשף לעולם האימון הרגשי – הפעם מכיסא המתאמנת. החוויה הזו שינתה את חיי מהקצה אל הקצה!"
-                                </p>
-                                <p>באותו רגע מדויק, כשהרגשתי את השינוי על בשרי, ידעתי שזה הייעוד שלי: להעביר את הטוב הזה הלאה, להעניק לילדים ולבני נוער את הכלים ששינו אותי.</p>
-                            </div>
-                            <button onClick={() => handleWhatsApp()}
-                                    className="flex items-center gap-2 text-[#2d7a68] font-bold hover:gap-4 transition-all">
-                                <span>רוצים להכיר אותי טוב יותר? בואו נדבר</span>
-                                <Icon name="arrow-left" size={20} />
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Testimonials ── */}
-                <section id="testimonials" className="py-24 px-6 bg-[#f0f2f5] overflow-hidden">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-5xl font-bold text-[#2d7a68] mb-4">מה הורים מספרים?</h2>
-                            <div className="w-24 h-1.5 bg-[#9eb89a] mx-auto rounded-full mb-8"></div>
-                            <p className="text-slate-700 font-semibold text-lg">הודעות אמיתיות שנשלחו כבר בזמן תהליך הליווי הרגשי של הילדים שלכם!</p>
-                        </div>
-                        <div className="space-y-10">
-                            {testimonials.map((t, i) => (
-                                <div key={i} className={`flex ${t.sent ? 'justify-end' : 'justify-start'}`}>
-                                    <div className={`max-w-[85%] md:max-w-[60%] whatsapp-bubble p-4 shadow-md ${t.sent ? 'sent bg-[#dcf8c6]' : 'bg-white'}`}>
-                                        <p className="text-slate-800 leading-relaxed text-lg mb-2 text-right">{t.text}</p>
-                                        <div className="text-[11px] text-slate-400 text-left">{t.time} ✓✓</div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Reels ── */}
-                <section id="reels" className="py-24 px-6 bg-white">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-5xl font-bold text-[#2d7a68] mb-4">צפו בתוכן שלי 📱</h2>
-                            <div className="w-24 h-1.5 bg-[#9eb89a] mx-auto rounded-full mb-4"></div>
-                            <p className="text-slate-600 text-lg">טיפים, תובנות ורגעים מהעבודה שלי עם ילדים</p>
-                        </div>
-
-                        <div className="relative px-6">
-                            <button className="scroll-btn right" onClick={() => scrollReels(-1)} aria-label="גלול ימינה">
-                                <Icon name="chevron-right" size={22} className="text-[#2d7a68]" />
-                            </button>
-
-                            <div ref={reelsRef} className="reels-track">
-                                {REELS.map((url, i) => (
-                                    <div key={i} className="reel-card">
-                                        <iframe
-                                            src={url}
-                                            scrolling="no"
-                                            allowTransparency="true"
-                                            allowFullScreen="true"
-                                        ></iframe>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <button className="scroll-btn left" onClick={() => scrollReels(1)} aria-label="גלול שמאלה">
-                                <Icon name="chevron-left" size={22} className="text-[#2d7a68]" />
-                            </button>
-                        </div>
-
-                        <div className="text-center mt-10">
-                            <a href="https://www.instagram.com/shir.galili_" target="_blank" rel="noopener noreferrer"
-                               className="inline-flex items-center gap-2 text-[#2d7a68] font-bold hover:text-[#9eb89a] transition-colors">
-                                <Icon name="instagram" size={20} />
-                                <span>לכל הרילסים באינסטגרם</span>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Freebie ── */}
-                <section id="freebie" className="py-24 px-6 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[#3d9080]"></div>
-                    <div className="max-w-5xl mx-auto relative z-10">
-                        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 text-white">
-                            <div className="md:w-3/5 space-y-6 text-right">
-                                <div className="inline-block bg-[#9eb89a] px-4 py-1 rounded-full text-sm font-bold">מתנה עבורכם</div>
-                                <h2 className="text-3xl md:text-5xl font-bold">לראות את העולם במגוון צבעים 🎨</h2>
-                                <p className="text-xl text-blue-50 leading-relaxed">הכנתי לכם מוצר חינמי שעוזר לילדים לגלות שיש יותר מדרך אחת להסתכל על סיטואציות. כלי פשוט שמשנה אווירה בבית.</p>
-                                <button onClick={() => handleWhatsApp('freebie')}
-                                        className="bg-[#25D366] text-white px-10 py-5 rounded-2xl text-xl font-bold flex items-center gap-3 shadow-xl hover:bg-[#20ba5a] hover:scale-105 active:scale-95 transition-all">
-                                    <Icon name="message-circle" size={30} />
-                                    <span>שלחי לי את המתנה לוואטסאפ</span>
-                                </button>
-                            </div>
-                            <div className="md:w-2/5 text-center">
-                                <div className="text-8xl animate-bounce-slow">🎁</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Clinic ── */}
-                <section className="py-24 px-6 bg-slate-50 text-right">
-                    <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-                        <div className="md:w-1/2">
-                            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group">
-                                <img src="clinic.png" alt="קליניקה" className="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
-                            </div>
-                        </div>
-                        <div className="md:w-1/2 space-y-6 text-right">
-                            <h2 className="text-3xl font-bold text-[#2d7a68]">הקליניקה שלי</h2>
-                            <div className="w-16 h-1.5 bg-[#9eb89a] rounded-full"></div>
-                            <p className="text-lg text-slate-600 leading-relaxed">התהליך מתקיים במרחב רגוע, בטוח ומזמין. הקליניקה מעוצבת כדי להשרות ביטחון ולאפשר ביטוי עצמי מלא דרך שיחה, משחק ויצירה.</p>
-                            <div className="space-y-4 pt-4">
-                                {["ליווי אישי ממוקד תוצאות 🌱", "הדרכת הורים צמודה 🏡", "סביבה תומכת ומקבלת ☁️"].map((t, i) => (
-                                    <div key={i} className="bg-white p-4 rounded-2xl border border-slate-100 font-bold shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">{t}</div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Footer / Contact ── */}
-                <footer id="contact" className="bg-[#1e293b] text-white py-20 px-6 text-right">
-                    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
-                        <div className="space-y-8 text-right">
-                            <div className="bg-white p-3 inline-block rounded-2xl shadow-lg">
-                                <img src="logo.png" className="h-20" alt="לוגו שיר" />
-                            </div>
-                            <h2 className="text-3xl font-bold">אני זמינה לכל שאלה</h2>
-                            <div className="space-y-4">
-                                <a href="tel:0544572696" className="flex items-center gap-4 text-xl hover:text-blue-400 transition group">
-                                    <div className="bg-blue-500/10 p-3 rounded-full text-blue-400 group-hover:bg-blue-500/20"><Icon name="phone" /></div>
-                                    <span className="font-mono">054-4572696</span>
-                                </a>
-                                <button onClick={() => handleWhatsApp()}
-                                        className="flex items-center gap-4 text-xl bg-[#25D366]/10 p-3 pr-4 rounded-2xl border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/20 transition-all w-full md:w-auto">
-                                    <Icon name="message-circle" />
-                                    <span className="font-bold">שיר - מאמנת רגשית</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/10 relative shadow-2xl text-right">
-                            {isSubmitted && (
-                                <div className="absolute inset-0 z-20 bg-slate-900/95 flex flex-col items-center justify-center p-8 text-center rounded-[2.5rem]">
-                                    <Icon name="check-circle" size={48} className="text-green-500 mb-4" />
-                                    <h3 className="text-2xl font-bold mb-2">המייל מוכן!</h3>
-                                    <p className="text-slate-300">אנא לחצו על 'שלח' באפליקציית המייל שפתחנו עבורכם.</p>
-                                    <button onClick={() => setIsSubmitted(false)} className="mt-4 underline text-[#9eb89a]">חזור</button>
-                                </div>
-                            )}
-                            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">נחזור אליכם בהקדם <span className="text-[#9eb89a]">🍃</span></h3>
-                            <form onSubmit={handleFormSubmit} className="space-y-5">
-                                <input required value={formData.name}
-                                       onChange={e => setFormData({...formData, name: e.target.value})}
-                                       className="w-full px-5 py-4 bg-white/5 rounded-xl border border-white/10 text-white focus:border-[#9eb89a] outline-none transition-colors text-right"
-                                       placeholder="שם מלא" />
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <input required value={formData.phone}
-                                           onChange={e => setFormData({...formData, phone: e.target.value})}
-                                           className="w-full px-5 py-4 bg-white/5 rounded-xl border border-white/10 text-white focus:border-[#9eb89a] outline-none transition-colors text-right"
-                                           placeholder="טלפון" />
-                                    <input required value={formData.age}
-                                           onChange={e => setFormData({...formData, age: e.target.value})}
-                                           className="w-full px-5 py-4 bg-white/5 rounded-xl border border-white/10 text-white focus:border-[#9eb89a] outline-none transition-colors text-right"
-                                           placeholder="גיל הילד/ה" />
-                                </div>
-                                <button type="submit"
-                                        className="w-full bg-[#8b7050] hover:bg-[#7a6145] py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition shadow-lg hover:shadow-xl">
-                                    <Icon name="send" size={20} />
-                                    <span>שליחת פרטים לתיאום</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div className="mt-20 pt-8 border-t border-white/10 text-center text-slate-500 text-sm">
-                        © {new Date().getFullYear()} שיר גלילי - מאמנת רגשית לילדים ובני נוער | כל הזכויות שמורות
-                    </div>
-                </footer>
-            </div>
-        );
-    };
-
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
