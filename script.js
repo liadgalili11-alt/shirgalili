@@ -10,6 +10,28 @@
     history.replaceState(null, '', window.location.pathname + window.location.search);
   }
 
+  /* ניווט פנימי בלי לשנות את הכתובת - כך רענון תמיד חוזר לראש העמוד */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var target = document.getElementById(link.getAttribute('href').slice(1));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView();
+    /* מעבירים פוקוס ליעד, למשתמשי מקלדת וקורא מסך */
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  });
+  /* קישור ישיר לחלק מסוים (למשל ‎#contact) עדיין עובד בכניסה הראשונה, ואז הכתובת מתנקה */
+  if (window.location.hash && document.getElementById(window.location.hash.slice(1))) {
+    var deepTarget = document.getElementById(window.location.hash.slice(1));
+    window.addEventListener('load', function () {
+      deepTarget.scrollIntoView({ behavior: 'auto' });
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    });
+  }
+
   /* כותרת עליונה - קו תחתון אחרי גלילה */
   var header = document.querySelector('.header');
   var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 10); };
