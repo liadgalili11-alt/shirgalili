@@ -4,13 +4,10 @@
 
   var WHATSAPP = '972544572696';
 
-  /* קישורים מאינסטגרם מגיעים לפעמים כ-#about?utm_source=... - מנקים וגוללים למקום הנכון */
-  var hash = window.location.hash;
-  if (hash.indexOf('?') > -1) {
-    var clean = hash.split('?')[0];
-    var target = document.getElementById(clean.slice(1));
-    history.replaceState(null, '', window.location.pathname + clean);
-    if (target) target.scrollIntoView();
+  /* הקישור מהביו באינסטגרם מגיע כ-#about?utm_source=... - מנקים את הכתובת ונשארים בראש העמוד,
+     כדי שהעמוד לא "יקפוץ" למטה מיד אחרי הטעינה */
+  if (window.location.hash.indexOf('?') > -1) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
   }
 
   /* כותרת עליונה - קו תחתון אחרי גלילה */
