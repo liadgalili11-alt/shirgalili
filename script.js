@@ -58,7 +58,7 @@
     if (card.querySelector('iframe')) return;
     var frame = document.createElement('iframe');
     frame.src = 'https://www.instagram.com/reel/' + card.dataset.reel + '/embed/';
-    frame.title = 'רילס של שיר גלילי באינסטגרם';
+    frame.title = 'רילס ' + (Array.prototype.indexOf.call(reels, card) + 1) + ' של שיר גלילי באינסטגרם';
     frame.loading = 'lazy';
     frame.allowFullscreen = true;
     frame.setAttribute('scrolling', 'no');

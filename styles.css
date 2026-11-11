@@ -277,6 +277,24 @@ h1 { position: relative; z-index: 0; }
 /* ── Footer ── */
 .footer { background: var(--teal-900); color: #dbe8e3; padding-block: 24px; font-size: .95rem; text-align: center; }
 
+.footer p { margin-block: 6px; }
+.footer__note { color: #fff; }
+.footer__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 20px; margin-block: 4px; }
+.footer a { color: #fff; font-weight: 700; display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: 4px; }
+.form__legal { margin-block-start: 12px; font-size: .95rem; color: var(--muted); }
+.form__legal a { color: var(--teal); font-weight: 700; }
+
+/* ── עמודי מסמך (נגישות, פרטיות) ── */
+.doc { padding-block: 40px 72px; }
+.doc .wrap { max-width: 760px; }
+.doc h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
+.doc h2 { font-size: 1.5rem; margin-block: 36px 10px; }
+.doc p { margin-block: 12px; }
+.doc ul { padding-inline-start: 22px; margin-block: 12px; }
+.doc li { margin-block: 8px; }
+.doc a { color: var(--teal); font-weight: 700; text-underline-offset: 4px; }
+.doc__date { color: var(--muted); font-size: 1rem; }
+
 /* ── Desktop ── */
 @media (min-width: 640px) {
   .focus-list { grid-template-columns: 1fr 1fr; }
